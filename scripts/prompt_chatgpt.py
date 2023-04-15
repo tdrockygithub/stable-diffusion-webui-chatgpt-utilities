@@ -17,6 +17,8 @@ script_dir = scripts.basedir()
 def on_ui_settings():
     section = ('chatgpt_utilities', "ChatGPT Utilities")
     shared.opts.add_option("chatgpt_utilities_api_key", shared.OptionInfo("", "OpenAI API Key", section=section))
+    shared.opts.add_option("chatgpt_system_prompt", shared.OptionInfo("", "OpenAI ChatGPT System Prompt", section=section))
+    shared.opts.add_option("chatgpt_user_prompt", shared.OptionInfo("", "OpenAI ChatGPT User Prompt", section=section))
 
 script_callbacks.on_ui_settings(on_ui_settings)
 
@@ -122,6 +124,7 @@ class Script(scripts.Script):
 
         temperature = 1.0
 
+        # Specific", "Normal", "Dreamy", "Hallucinating
         if (precision_dropdown == 0):
             temperature = 0.5
         elif (precision_dropdown == 1):
