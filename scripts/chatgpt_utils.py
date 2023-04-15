@@ -67,6 +67,8 @@ def get_chat_completion(messages, temperature):
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo", messages=messages, temperature=temperature)
     response_content = completion.choices[0].message.content
     if response_content.sd_prompts is not None:
+        print(f"ChatGPT response for sd_prompts and additional info:\r\n")
+        print(f"{response_content.strip()}\r\n")
         return response_content.sd_prompts
     else:
         return response_content
